@@ -1,0 +1,14 @@
+# Eclipse
+.classpath
+.project
+.factorypath
+.settings/
+
+# Maven
+target/
+
+# OS / IDE
+*.log
+*.iml
+.idea/
+.DS_Store
