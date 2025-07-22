@@ -1,0 +1,18 @@
+services:
+  oracle:
+    image: gvenzl/oracle-xe:18
+    container_name: oracle18xe
+    ports:
+      - "${ORACLE_EXTERNAL_PORT}:${ORACLE_INTERNAL_PORT}"
+    environment:
+      ORACLE_PASSWORD: ${ORACLE_PASSWORD}
+      APP_USER: ${APP_USER}
+      APP_USER_PASSWORD: ${APP_USER_PASSWORD}
+    volumes:
+      - ordata:/opt/oracle/oradata
+    env_file:
+      - .env
+    restart: always
+
+volumes:
+  ordata:

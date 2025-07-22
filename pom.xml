@@ -124,6 +124,7 @@
 			<version>5.11.0</version>
 			<scope>test</scope>
 		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -131,6 +132,7 @@
 			<version>1.18.34</version>
 			<scope>provided</scope>
 		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -138,12 +140,27 @@
 			<version>4.13.0</version>
 			<scope>test</scope>
 		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${spring.maven.artifact.version}</version>
 			<scope>test</scope>
+		</dependency>
+		
+		<!-- ojdbc -->
+		<dependency>
+		  <groupId>com.oracle.database.jdbc</groupId>
+		  <artifactId>ojdbc8</artifactId>
+		  <version>19.3.0.0</version>
+		</dependency>
+		
+		<!-- HikariCP -->
+		<dependency>
+		  <groupId>com.zaxxer</groupId>
+		  <artifactId>HikariCP</artifactId>
+		  <version>5.0.1</version>
 		</dependency>
 	</dependencies>
 
@@ -171,6 +188,7 @@
                 		<failOnMissingWebXml>false</failOnMissingWebXml>
                 	</configuration>
                 </plugin>
+                
                 <!-- PMD manven plugin -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -196,6 +214,7 @@
         			</systemPropertyVariables> 
                 </configuration>
             </plugin>
+            
             <!-- JavaDoc -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

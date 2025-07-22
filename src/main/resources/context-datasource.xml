@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+  <!-- Property Placeholder Configurer -->
+  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="locations" value="classpath:/properties/jdbc.properties"/>
+  </bean>    
+      
+  <!-- DB Connection -->
+  <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+    <property name="driverClassName" value="${database.driver}"/>
+    <property name="jdbcUrl" value="${database.url}"/>
+    <property name="username" value="${database.username}"/>
+    <property name="password" value="${database.password}"/>
+    
+    <property name="initializationFailTimeout" value="1" />
+    
+    <property name="minimumIdle" value="5" />
+    <property name="maximumPoolSize" value="20" />
+  </bean>
+
+  <!-- MyBatis SqlSessionFactory -->
+  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="dataSource" ref="dataSource" />
+    <property name="mapperLocations" value="classpath:/egovframework/sqlmap/mappers/**/*.xml"/>
+  </bean>
+
+  <!-- Mapper Scanner -->
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <property name="basePackage" value="mapper"/>
+  </bean>
+
+</beans>
