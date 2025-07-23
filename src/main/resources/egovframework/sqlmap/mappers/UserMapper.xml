@@ -29,7 +29,8 @@
            PASSWORD, 
            NAME,
            ROLE,
-           EMAIL 
+           EMAIL,
+           PHONE
     FROM TBL_USER
       <where>
         <if test="userId != null">

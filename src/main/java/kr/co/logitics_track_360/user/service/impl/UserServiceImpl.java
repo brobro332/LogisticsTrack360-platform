@@ -9,8 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.logitics_track_360.user.dao.UserMapper;
 import kr.co.logitics_track_360.user.dto.JoinRequestDto;
-import kr.co.logitics_track_360.user.dto.LoginRequestDto;
-import kr.co.logitics_track_360.user.dto.LoginResponseDto;
 import kr.co.logitics_track_360.user.dto.SelectResponseDto;
 import kr.co.logitics_track_360.user.service.UserService;
 import kr.co.logitics_track_360.user.vo.UserVO;
@@ -26,28 +24,6 @@ public class UserServiceImpl implements UserService {
         this.passwordEncoder = passwordEncoder;
     }
     
-	@Override
-	public LoginResponseDto authenticate(LoginRequestDto dto) {
-		Map<String, Object> params = new HashMap<>();
-        params.put("userId", dto.getUserId());
-        params.put("email", null);
-        
-        UserVO user = mapper.selectBy(params);
-        
-        if (user == null) throw new RuntimeException("사용자가 없습니다.");
-        if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
-            throw new RuntimeException("비밀번호가 틀립니다.");
-        }
-
-        return new LoginResponseDto.Builder()
-    		.userId(user.getUserId())
-    		.name(user.getName())
-    		.role(user.getRole())
-    		.email(user.getEmail())
-    		.phone(user.getPhone())
-    		.build();
-    }
-
 	@Override
 	@Transactional
 	public void register(JoinRequestDto dto) {
