@@ -31,10 +31,12 @@
     <property name="dataSource" ref="dataSource" />
     <property name="mapperLocations" value="classpath:/egovframework/sqlmap/mappers/**/*.xml"/>
   </bean>
-
-  <!-- Mapper Scanner -->
-  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-    <property name="basePackage" value="mapper"/>
+  
+  <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="kr.co.logitics_track_360.user.dao.UserMapper" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
   </bean>
-
+  
+  <!-- BCryptPasswordEncoder -->
+  <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 </beans>

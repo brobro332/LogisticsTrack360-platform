@@ -1,4 +1,4 @@
-package user.web;
+package kr.co.logitics_track_360.user.web;
 
 import javax.servlet.http.HttpSession;
 
@@ -7,14 +7,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import user.dto.JoinRequestDto;
-import user.dto.LoginRequestDto;
-import user.dto.LoginResponseDto;
-import user.service.UserService;
+import kr.co.logitics_track_360.user.dto.JoinRequestDto;
+import kr.co.logitics_track_360.user.dto.LoginRequestDto;
+import kr.co.logitics_track_360.user.dto.LoginResponseDto;
+import kr.co.logitics_track_360.user.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
+@Slf4j
 @RequestMapping("/user")
 public class UserController {
 	private final UserService service;
@@ -23,17 +26,17 @@ public class UserController {
         this.service = service;
     }
 	
-	@GetMapping("/login")
+	@GetMapping("/login.do")
 	public String renderLoginPage() {
 		return "user/login";
 	}
 	
-	@GetMapping("/join")
+	@GetMapping("/join.do")
 	public String renderJoinPage() {
 		return "user/join";
 	}
 	
-	@PostMapping("/login")
+	@PostMapping("/login.do")
     public String handleLogin(@ModelAttribute LoginRequestDto dto, HttpSession session, Model model) {
         LoginResponseDto authnUser = service.authenticate(dto);
         if (authnUser != null) {
@@ -45,13 +48,16 @@ public class UserController {
         }
     }
 	
-	@PostMapping("/join")
-    public String handleRegister(@ModelAttribute JoinRequestDto dto) {
-        service.register(dto);
-        return "redirect:/user/login";
+	@PostMapping("/join.do")
+    public String handleJoin(@RequestBody JoinRequestDto dto) {
+        log.info("테스트");
+		
+		service.register(dto);
+        
+        return "redirect:/user/login.do";
     }
 	
-	@GetMapping("/profile")
+	@GetMapping("/profile.do")
 	public String renderProfilePage(HttpSession session, Model model) {
 	    LoginResponseDto userInfo = (LoginResponseDto) session.getAttribute("userInfo");
 
@@ -60,7 +66,7 @@ public class UserController {
 	        model.addAttribute("userInfo", service.select(userId));
 	        return "user/profile";
 	    } else {
-	        return "redirect:/user/login";
+	        return "redirect:/user/login.do";
 	    }
 	}
 }

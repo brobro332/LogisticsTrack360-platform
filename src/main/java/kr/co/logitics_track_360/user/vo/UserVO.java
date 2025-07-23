@@ -1,4 +1,4 @@
-package user.vo;
+package kr.co.logitics_track_360.user.vo;
 
 public class UserVO {
     private final String userId;

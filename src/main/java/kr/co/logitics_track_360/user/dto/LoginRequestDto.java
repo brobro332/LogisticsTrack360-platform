@@ -1,4 +1,4 @@
-package user.dto;
+package kr.co.logitics_track_360.user.dto;
 
 public class LoginRequestDto {
 	private String userId;
