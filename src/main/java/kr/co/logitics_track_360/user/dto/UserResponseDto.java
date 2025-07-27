@@ -1,15 +1,15 @@
 package kr.co.logitics_track_360.user.dto;
 
-public class SelectResponseDto {
+public class UserResponseDto {
     private String userId;
     private String name;
     private String role;
     private String email;
     private String phone;
     
-	public SelectResponseDto() { }
+	public UserResponseDto() { }
 
-	public SelectResponseDto(String userId, String name, String role, String email, String phone) {
+	public UserResponseDto(String userId, String name, String role, String email, String phone) {
 		this.userId = userId;
 		this.name = name;
 		this.role = role;
@@ -40,7 +40,7 @@ public class SelectResponseDto {
 	public static class Builder {
         private String userId;
         private String name;
-        private String role;
+        private String role;   /* CUSTOMER, ADMIN */
         private String email;
         private String phone;
 
@@ -69,8 +69,8 @@ public class SelectResponseDto {
             return this;
         }
 
-        public SelectResponseDto build() {
-            return new SelectResponseDto(userId, name, role, email, phone);
+        public UserResponseDto build() {
+            return new UserResponseDto(userId, name, role, email, phone);
         }
     }
 }

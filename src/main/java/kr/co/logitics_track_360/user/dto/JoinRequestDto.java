@@ -4,7 +4,7 @@ public class JoinRequestDto {
 	private String userId;
 	private String password;
     private String name;
-    private String role;
+    private String role;     /* CUSTOMER, ADMIN */
     private String email;
     private String phone;
     

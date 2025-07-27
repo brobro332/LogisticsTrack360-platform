@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.logitics_track_360.user.dao.UserMapper;
 import kr.co.logitics_track_360.user.dto.JoinRequestDto;
-import kr.co.logitics_track_360.user.dto.SelectResponseDto;
+import kr.co.logitics_track_360.user.dto.UserResponseDto;
 import kr.co.logitics_track_360.user.service.UserService;
 import kr.co.logitics_track_360.user.vo.UserVO;
 
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public SelectResponseDto select(String userId) {
+	public UserResponseDto select(String userId) {
 		Map<String, Object> params = new HashMap<>();
         params.put("userId", userId);
         params.put("email", null);
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
 		
 		if (user == null) throw new RuntimeException("사용자가 없습니다.");
 		
-		return new SelectResponseDto.Builder()
+		return new UserResponseDto.Builder()
 			.userId(user.getUserId())
 			.name(user.getName())
 			.role(user.getRole())

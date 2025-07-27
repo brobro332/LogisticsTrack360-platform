@@ -4,7 +4,7 @@ public class UserVO {
     private final String userId;
     private final String password;
     private final String name;
-    private final String role;
+    private final String role;     /* CUSTOMER, ADMIN */
     private final String email;
     private final String phone;
 
