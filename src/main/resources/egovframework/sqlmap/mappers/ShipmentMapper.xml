@@ -5,18 +5,20 @@
 
 <mapper namespace="kr.co.logitics_track_360.shipment.dao.ShipmentMapper">
     <resultMap id="ShipmentResultMap" type="kr.co.logitics_track_360.shipment.vo.ShipmentVO">
-        <id property="shipmentId" column="SHIPMENT_ID" />
-        <result property="orderId" column="ORDER_ID" />
-        <result property="carrierName" column="CARRIER_NAME" />
-        <result property="trackingNumber" column="TRACKING_NUMBER" />
-        <result property="shippedAt" column="SHIPPED_AT" />
-        <result property="arrivalEstimate" column="ARRIVAL_ESTIMATE" />
-        <result property="shipmentStatus" column="SHIPMENT_STATUS" />
-        <result property="sourceType" column="SOURCE_TYPE" />
-        <result property="updatedBy" column="UPDATED_BY" />
-        <result property="updatedAt" column="UPDATED_AT" />
-        <result property="createdAt" column="CREATED_AT" />
-    </resultMap>
+	  <constructor>
+	    <idArg column="SHIPMENT_ID" javaType="java.lang.Long" />
+	    <arg column="ORDER_ID" javaType="java.lang.String" />
+	    <arg column="CARRIER_NAME" javaType="java.lang.String" />
+	    <arg column="TRACKING_NUMBER" javaType="java.lang.String" />
+	    <arg column="SHIPPED_AT" javaType="java.time.LocalDateTime" />
+	    <arg column="ARRIVAL_ESTIMATE" javaType="java.time.LocalDate" />
+	    <arg column="SHIPMENT_STATUS" javaType="java.lang.String" />
+	    <arg column="SOURCE_TYPE" javaType="java.lang.String" />
+	    <arg column="UPDATED_BY" javaType="java.lang.String" />
+	    <arg column="UPDATED_AT" javaType="java.time.LocalDateTime" />
+	    <arg column="CREATED_AT" javaType="java.time.LocalDateTime" />
+	  </constructor>
+	</resultMap>
 
     <select id="selectShipmentList" resultMap="ShipmentResultMap">
         SELECT *
