@@ -1,0 +1,38 @@
+# Visual Studio / .NET
+
+## Build results
+[Bb]in/
+[Oo]bj/
+
+## Visual Studio IDE
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## NuGet packages
+packages/
+*.nupkg
+*.nuget.props
+*.nuget.targets
+
+## User-specific files
+*.userprefs
+*.testsettings
+
+# Log files
+*.log
+
+# Secrets and environment-specific configuration
+appsettings.Development.json
+secrets.json
+*.env
+app.config
+
+# OS generated files
+# Windows
+Thumbs.db
+desktop.ini
+# macOS
+.DS_Store
