@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.co.logitics_track_360.order.dto.OrderStatusHistoryCreateRequestDto;
+import kr.co.logitics_track_360.order.service.OrderService;
 import kr.co.logitics_track_360.shipment.dao.ShipmentMapper;
 import kr.co.logitics_track_360.shipment.dto.ShipmentCreateRequestDto;
 import kr.co.logitics_track_360.shipment.dto.ShipmentResponseDto;
@@ -16,9 +18,11 @@ import kr.co.logitics_track_360.shipment.vo.ShipmentVO;
 @Service
 @Transactional(readOnly = true)
 public class ShipmentServiceImpl implements ShipmentService {
+	private final OrderService orderService;
 	private final ShipmentMapper mapper;
 	
-	public ShipmentServiceImpl(ShipmentMapper mapper) {
+	public ShipmentServiceImpl(OrderService orderService, ShipmentMapper mapper) {
+		this.orderService = orderService;
 		this.mapper = mapper;
 	}
 
@@ -65,6 +69,13 @@ public class ShipmentServiceImpl implements ShipmentService {
 	@Override
 	@Transactional
 	public int create(ShipmentCreateRequestDto dto) {
+		if ("DELIVERED".equals(dto.getShipmentStatus())) {
+			orderService.updateOrderStatus(
+				dto.getUpdatedBy(), 
+				new OrderStatusHistoryCreateRequestDto(null, dto.getOrderId(), "DELIVERED", null, null)
+			);
+		}
+		
 		return mapper.insert(dto);
 	}
 

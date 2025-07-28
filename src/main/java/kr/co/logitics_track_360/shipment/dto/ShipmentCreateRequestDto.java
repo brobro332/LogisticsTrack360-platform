@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class ShipmentCreateRequestDto {
-    private String orderId;
+    private Long orderId;
     private String carrierName;
     private String trackingNumber;
     private String shipmentStatus;
@@ -21,7 +21,7 @@ public class ShipmentCreateRequestDto {
 
     public ShipmentCreateRequestDto() {}
 
-    public ShipmentCreateRequestDto(String orderId, String carrierName, String trackingNumber,
+    public ShipmentCreateRequestDto(Long orderId, String carrierName, String trackingNumber,
                                     LocalDateTime shippedAt, LocalDate arrivalEstimate,
                                     String shipmentStatus, String sourceType, String updatedBy) {
         this.orderId = orderId;
@@ -34,7 +34,7 @@ public class ShipmentCreateRequestDto {
         this.updatedBy = updatedBy;
     }
 
-    public String getOrderId() {
+    public Long getOrderId() {
         return orderId;
     }
 
@@ -66,7 +66,7 @@ public class ShipmentCreateRequestDto {
         return updatedBy;
     }
 
-	public void setOrderId(String orderId) {
+	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
 	}
 

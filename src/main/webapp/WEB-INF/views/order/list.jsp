@@ -44,8 +44,8 @@
                             <c:when test="${order.status eq 'READY'}">준비중</c:when>
                             <c:when test="${order.status eq 'PICKUP'}">픽업요청</c:when>
                             <c:when test="${order.status eq 'DISPATCHED'}">출고완료</c:when>
-                            <c:when test="${order.status eq 'DELIVERED'}">배송중</c:when>
-                            <c:when test="${order.status eq 'COMPLETED'}">배송완료</c:when>
+                            <c:when test="${order.status eq 'DELIVERED'}">배송완료</c:when>
+                            <c:when test="${order.status eq 'COMPLETED'}">주문확정</c:when>
                             <c:when test="${order.status eq 'DELETED'}">삭제완료</c:when>
                             <c:otherwise>${order.status}</c:otherwise>
                         </c:choose>
@@ -73,8 +73,8 @@
 	        	<option value="READY">준비중</option>
 	            <option value="PICKUP">픽업요청</option>
 	            <option value="DISPATCHED">출고완료</option>
-	            <option value="DELIVERED">배송중</option>
-	            <option value="COMPLETED">배송완료</option>
+	            <option value="DELIVERED">배송완료</option>
+	            <option value="COMPLETED">주문확정</option>
 	            <option value="DELETED">삭제완료</option>
 	        </select><br><br>
 	

@@ -15,8 +15,8 @@
                     <c:when test="${order.status eq 'READY'}">준비중</c:when>
                     <c:when test="${order.status eq 'PICKUP'}">픽업요청</c:when>
                     <c:when test="${order.status eq 'DISPATCHED'}">출고완료</c:when>
-                    <c:when test="${order.status eq 'DELIVERED'}">배송중</c:when>
-                    <c:when test="${order.status eq 'COMPLETED'}">배송완료</c:when>
+                    <c:when test="${order.status eq 'DELIVERED'}">배송완료</c:when>
+                    <c:when test="${order.status eq 'COMPLETED'}">주문확정</c:when>
                     <c:when test="${order.status eq 'DELETED'}">삭제완료</c:when>
                     <c:otherwise>${order.status}</c:otherwise>
                 </c:choose>
@@ -63,8 +63,8 @@
                             <c:when test="${history.status eq 'READY'}">준비중</c:when>
                             <c:when test="${history.status eq 'PICKUP'}">픽업요청</c:when>
                             <c:when test="${history.status eq 'DISPATCHED'}">출고완료</c:when>
-                            <c:when test="${history.status eq 'DELIVERED'}">배송중</c:when>
-                            <c:when test="${history.status eq 'COMPLETED'}">배송완료</c:when>
+                            <c:when test="${history.status eq 'DELIVERED'}">배송완료</c:when>
+                            <c:when test="${history.status eq 'COMPLETED'}">주문확정</c:when>
                             <c:when test="${history.status eq 'DELETED'}">삭제완료</c:when>
                             <c:otherwise>${history.status}</c:otherwise>
                         </c:choose>
