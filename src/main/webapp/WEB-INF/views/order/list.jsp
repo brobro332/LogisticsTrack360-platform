@@ -39,7 +39,9 @@
                     <td>${order.createdAt}</td>
                     <td>
                         <button type="button" onclick="viewDetail('${order.orderId}')">상세</button>
+                        <!-- ADMIN
                         <button type="button" onclick="updateStatus('${order.orderId}')">상태변경</button>
+                        -->
                     </td>
                 </tr>
             </c:forEach>
@@ -71,6 +73,7 @@
         window.location.href = "${pageContext.request.contextPath}/order/details.do?orderId=" + encodeURIComponent(orderId);
     }
 
+    /* ADMIN
     function updateStatus(orderId) {
         currentOrderId = orderId;
         document.getElementById('statusModal').style.display = 'block';  // Modal 표시
@@ -106,4 +109,5 @@
     function closeModal() {
         document.getElementById('statusModal').style.display = 'none';
     }
+    */
 </script>

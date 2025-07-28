@@ -53,7 +53,7 @@
     <h3>상태이력</h3>
     <table border="1" style="border-collapse: collapse; width: 100%; max-width: 800px;">
         <thead>
-            <tr><th>상태</th><th>수정자</th><th>수정일시</th></tr>
+            <tr><th>상태</th><th>등록자</th><th>등록일시</th></tr>
         </thead>
         <tbody>
             <c:forEach var="history" items="${historyList}">
