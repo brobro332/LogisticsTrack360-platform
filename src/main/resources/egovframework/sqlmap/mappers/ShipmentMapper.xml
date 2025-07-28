@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.logitics_track_360.shipment.dao.ShipmentMapper">
+    <resultMap id="ShipmentResultMap" type="kr.co.logitics_track_360.shipment.vo.ShipmentVO">
+        <id property="shipmentId" column="SHIPMENT_ID" />
+        <result property="orderId" column="ORDER_ID" />
+        <result property="carrierName" column="CARRIER_NAME" />
+        <result property="trackingNumber" column="TRACKING_NUMBER" />
+        <result property="shippedAt" column="SHIPPED_AT" />
+        <result property="arrivalEstimate" column="ARRIVAL_ESTIMATE" />
+        <result property="shipmentStatus" column="SHIPMENT_STATUS" />
+        <result property="sourceType" column="SOURCE_TYPE" />
+        <result property="updatedBy" column="UPDATED_BY" />
+        <result property="updatedAt" column="UPDATED_AT" />
+        <result property="createdAt" column="CREATED_AT" />
+    </resultMap>
+
+    <select id="selectShipmentList" resultMap="ShipmentResultMap">
+        SELECT *
+        FROM TBL_SHIPMENT
+        ORDER BY SHIPPED_AT DESC, CREATED_AT DESC
+    </select>
+
+    <select id="selectShipment" resultMap="ShipmentResultMap" parameterType="long">
+        SELECT *
+        FROM TBL_SHIPMENT
+        WHERE SHIPMENT_ID = #{shipmentId}
+    </select>
+
+    <insert id="insert" parameterType="kr.co.logitics_track_360.shipment.dto.ShipmentCreateRequestDto">
+        INSERT INTO TBL_SHIPMENT (
+            SHIPMENT_ID,
+            ORDER_ID,
+            CARRIER_NAME,
+            TRACKING_NUMBER,
+            SHIPPED_AT,
+            ARRIVAL_ESTIMATE,
+            SHIPMENT_STATUS,
+            SOURCE_TYPE,
+            UPDATED_BY
+        ) VALUES (
+            SEQ_SHIPMENT_ID.NEXTVAL,
+            #{orderId},
+            #{carrierName},
+            #{trackingNumber},
+            #{shippedAt},
+            #{arrivalEstimate},
+            #{shipmentStatus},
+            #{sourceType},
+            #{updatedBy}
+        )
+    </insert>
+
+    <update id="update" parameterType="kr.co.logitics_track_360.shipment.dto.ShipmentUpdateRequestDto">
+        UPDATE TBL_SHIPMENT
+        SET
+            CARRIER_NAME = #{carrierName},
+            TRACKING_NUMBER = #{trackingNumber},
+            SHIPPED_AT = #{shippedAt},
+            ARRIVAL_ESTIMATE = #{arrivalEstimate},
+            SHIPMENT_STATUS = #{shipmentStatus},
+            SOURCE_TYPE = #{sourceType},
+            UPDATED_BY = #{updatedBy}
+        WHERE SHIPMENT_ID = #{shipmentId}
+    </update>
+</mapper>

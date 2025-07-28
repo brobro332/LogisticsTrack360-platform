@@ -20,11 +20,9 @@
     <nav>
         <ul>
             <li><a href="${pageContext.request.contextPath}/order/list.do">주문관리</a></li>
-
             <c:if test="${isAdmin}">
                 <li><a href="${pageContext.request.contextPath}/dispatch/list.do">출고관리</a></li>
-                <li><a href="#">운송관리</a></li>
-                <li><a href="#">통관관리</a></li>
+                <li><a href="${pageContext.request.contextPath}/shipment/list.do">운송관리</a></li>
             </c:if>
         </ul>
     </nav>
