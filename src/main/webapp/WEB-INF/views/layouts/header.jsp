@@ -15,7 +15,7 @@
     </div>
     <nav>
         <ul>
-            <li><a href="${pageContext.request.contextPath}/user/profile.do">내 정보 조회</a></li>
+            <li><a href="${pageContext.request.contextPath}/user/profile.do">프로필</a></li>
         </ul>
     </nav>
     <div class="user-info">

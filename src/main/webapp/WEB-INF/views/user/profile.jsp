@@ -2,11 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="container" style="padding: 30px;">
-  <h2>내 정보 조회</h2>
+  <h2>프로필</h2>
   
   <table border="1" style="border-collapse: collapse; width: 400px;">
     <tr>
-      <th>사용자 ID</th>
+      <th>사용자ID</th>
       <td><c:out value="${userInfo.userId}"/></td>
     </tr>
     <tr>
@@ -26,7 +26,4 @@
       <td><c:out value="${userInfo.phone}"/></td>
     </tr>
   </table>
-
-  <br/>
-  <a href="${pageContext.request.contextPath}/main.do">메인으로 돌아가기</a>
 </div>	
