@@ -3,7 +3,7 @@ package kr.co.logitics_track_360.order.dto;
 import java.time.LocalDateTime;
 
 public class OrderStatusHistoryResponseDto {
-	private Long statusId;
+	private Long historyId;
     private String orderId;
     private String status;           /* READY, PICKUP, DISPATCHED, DELIVERED, COMPLETED, DELETED */
     private String updatedBy;
@@ -11,17 +11,17 @@ public class OrderStatusHistoryResponseDto {
     
     public OrderStatusHistoryResponseDto() { }
     
-	public OrderStatusHistoryResponseDto(Long statusId, String orderId, String status, String updatedBy,
+	public OrderStatusHistoryResponseDto(Long historyId, String orderId, String status, String updatedBy,
 			LocalDateTime updatedAt) {
-		this.statusId = statusId;
+		this.historyId = historyId;
 		this.orderId = orderId;
 		this.status = status;
 		this.updatedBy = updatedBy;
 		this.updatedAt = updatedAt;
 	}
 
-	public Long getStatusId() {
-		return statusId;
+	public Long getHistoryId() {
+		return historyId;
 	}
 	
 	public String getOrderId() {
@@ -41,14 +41,14 @@ public class OrderStatusHistoryResponseDto {
 	}
     
     public static class Builder {
-        private Long statusId;
+        private Long historyId;
         private String orderId;
         private String status;
         private String updatedBy;
         private LocalDateTime updatedAt;
 
-        public Builder statusId(Long statusId) {
-            this.statusId = statusId;
+        public Builder historyId(Long historyId) {
+            this.historyId = historyId;
             return this;
         }
 
@@ -73,7 +73,7 @@ public class OrderStatusHistoryResponseDto {
         }
 
         public OrderStatusHistoryResponseDto build() {
-            return new OrderStatusHistoryResponseDto(statusId, orderId, status, updatedBy, updatedAt);
+            return new OrderStatusHistoryResponseDto(historyId, orderId, status, updatedBy, updatedAt);
         }
     }
 }

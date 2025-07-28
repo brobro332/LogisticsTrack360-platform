@@ -2,29 +2,32 @@ package kr.co.logitics_track_360.order.dto;
 
 import java.time.LocalDateTime;
 
+import lombok.ToString;
+
+@ToString
 public class OrderStatusHistoryCreateRequestDto {
-	private Long statusId;
-    private String orderId;
+	private Long historyId;
+    private Long orderId;
     private String status;           /* READY, PICKUP, DISPATCHED, DELIVERED, COMPLETED, DELETED */
     private String updatedBy;
     private LocalDateTime updatedAt;
     
     public OrderStatusHistoryCreateRequestDto() { }
     
-	public OrderStatusHistoryCreateRequestDto(Long statusId, String orderId, String status, String updatedBy,
+	public OrderStatusHistoryCreateRequestDto(Long historyId, Long orderId, String status, String updatedBy,
 			LocalDateTime updatedAt) {
-		this.statusId = statusId;
+		this.historyId = historyId;
 		this.orderId = orderId;
 		this.status = status;
 		this.updatedBy = updatedBy;
 		this.updatedAt = updatedAt;
 	}
 
-	public Long getStatusId() {
-		return statusId;
+	public Long getHistoryId() {
+		return historyId;
 	}
 	
-	public String getOrderId() {
+	public Long getOrderId() {
 		return orderId;
 	}
 	
@@ -40,11 +43,11 @@ public class OrderStatusHistoryCreateRequestDto {
 		return updatedAt;
 	}
 
-	public void setStatusId(Long statusId) {
-		this.statusId = statusId;
+	public void setHistoryId(Long historyId) {
+		this.historyId = historyId;
 	}
 
-	public void setOrderId(String orderId) {
+	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
 	}
 

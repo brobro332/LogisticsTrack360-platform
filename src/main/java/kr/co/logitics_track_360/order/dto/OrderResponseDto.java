@@ -2,8 +2,11 @@ package kr.co.logitics_track_360.order.dto;
 
 import java.time.LocalDateTime;
 
+import lombok.ToString;
+
+@ToString
 public class OrderResponseDto {
-	private String orderId;
+	private Long orderId;
 	private String title;
     private String description;
     private String status;           /* READY, PICKUP, DISPATCHED, DELIVERED, COMPLETED, DELETED */
@@ -14,7 +17,7 @@ public class OrderResponseDto {
     
     public OrderResponseDto() { }
     
-	public OrderResponseDto(String orderId, String title, String description, String status, String userId, String userName,
+	public OrderResponseDto(Long orderId, String title, String description, String status, String userId, String userName,
 			LocalDateTime createdAt, LocalDateTime updatedAt) {
 		this.orderId = orderId;
 		this.title = title;
@@ -26,7 +29,7 @@ public class OrderResponseDto {
 		this.updatedAt = updatedAt;
 	}
 
-	public String getOrderId() {
+	public Long getOrderId() {
 		return orderId;
 	}
 	
@@ -59,7 +62,7 @@ public class OrderResponseDto {
 	}
 	
 	public static class Builder {
-		private String orderId;
+		private Long orderId;
 		private String title;
 	    private String description;
 	    private String status;
@@ -68,7 +71,7 @@ public class OrderResponseDto {
 	    private LocalDateTime createdAt;
 	    private LocalDateTime updatedAt;
 
-        public Builder orderId(String orderId) {
+        public Builder orderId(Long orderId) {
             this.orderId = orderId;
             return this;
         }

@@ -57,7 +57,7 @@ public class ItemResponseDto {
         private String orderId;
         private String name;
         private int quantity;
-        private String unit;
+        private String unit;       /* EA, KG */
         private BigDecimal weight;
         private String hsCode;
 

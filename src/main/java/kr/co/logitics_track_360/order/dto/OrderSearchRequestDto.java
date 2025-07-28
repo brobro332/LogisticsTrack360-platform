@@ -3,6 +3,7 @@ package kr.co.logitics_track_360.order.dto;
 import java.time.LocalDate;
 
 public class OrderSearchRequestDto {
+	private String userId;
 	private String keyword;     /* title, description */
     private String status;      /* READY, PICKUP, DISPATCHED, DELIVERED, COMPLETED, DELETED */
     private LocalDate fromDate;
@@ -12,13 +13,18 @@ public class OrderSearchRequestDto {
     
     public OrderSearchRequestDto() { }
     
-	public OrderSearchRequestDto(String keyword, String status, LocalDate fromDate, LocalDate toDate, int page, int size) {
+	public OrderSearchRequestDto(String userId, String keyword, String status, LocalDate fromDate, LocalDate toDate, int page, int size) {
+		this.userId = userId;
 		this.keyword = keyword;
 		this.status = status;
 		this.fromDate = fromDate;
 		this.toDate = toDate;
 		this.page = page;
 		this.size = size;
+	}
+
+	public String getUserId() {
+		return userId;
 	}
 
 	public String getKeyword() {
@@ -43,6 +49,10 @@ public class OrderSearchRequestDto {
 	
 	public int getSize() {
 		return size;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	
 	public void setKeyword(String keyword) {

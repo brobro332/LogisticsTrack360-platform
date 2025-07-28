@@ -3,7 +3,7 @@ package kr.co.logitics_track_360.order.dto;
 import java.math.BigDecimal;
 
 public class ItemCreateRequestDto {
-	private String orderId;
+	private Long orderId;
 	private String name;
     private int quantity;
     private String unit;       /* EA, KG */
@@ -12,7 +12,7 @@ public class ItemCreateRequestDto {
     
     public ItemCreateRequestDto() { }
     
-	public ItemCreateRequestDto(String orderId, String name, int quantity, String unit, BigDecimal weight, String hsCode) {
+	public ItemCreateRequestDto(Long orderId, String name, int quantity, String unit, BigDecimal weight, String hsCode) {
 		this.orderId = orderId;
 		this.name = name;
 		this.quantity = quantity;
@@ -21,7 +21,7 @@ public class ItemCreateRequestDto {
 		this.hsCode = hsCode;
 	}
 	
-	public String getOrderId() {
+	public Long getOrderId() {
 		return orderId;
 	}
 
@@ -45,7 +45,7 @@ public class ItemCreateRequestDto {
 		return hsCode;
 	}
 	
-	public void setOrderId(String orderId) {
+	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
 	}
 	

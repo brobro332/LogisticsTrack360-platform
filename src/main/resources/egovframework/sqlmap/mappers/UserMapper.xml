@@ -32,13 +32,13 @@
            EMAIL,
            PHONE
     FROM TBL_USER
-      <where>
-        <if test="userId != null">
-          AND USER_ID = #{userId}
-        </if>
-        <if test="email != null">
-          AND EMAIL = #{email}
-        </if>
+    <where>
+      <if test="userId != null">
+        AND USER_ID = #{userId}
+      </if>
+      <if test="email != null">
+        AND EMAIL = #{email}
+      </if>
     </where>
   </select>
 </mapper>

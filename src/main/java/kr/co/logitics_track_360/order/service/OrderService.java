@@ -10,10 +10,10 @@ import kr.co.logitics_track_360.order.dto.OrderStatusHistoryCreateRequestDto;
 import kr.co.logitics_track_360.order.dto.OrderStatusHistoryResponseDto;
 
 public interface OrderService {
-	void create(OrderCreateRequestDto dto);
-	List<OrderResponseDto> selectOrderList(OrderSearchRequestDto dto);
+	void create(String userId, OrderCreateRequestDto dto);
+	List<OrderResponseDto> selectOrderList(String userId, OrderSearchRequestDto dto);
 	OrderResponseDto selectOrder(String orderId);
 	List<ItemResponseDto> selectItemList(String orderId);
 	List<OrderStatusHistoryResponseDto> selectStatusHistoryList(String orderId);
-	void updateOrderStatus(OrderStatusHistoryCreateRequestDto dto);
+	void updateOrderStatus(String userId, OrderStatusHistoryCreateRequestDto dto);
 }

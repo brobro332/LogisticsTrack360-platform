@@ -20,8 +20,10 @@ import kr.co.logitics_track_360.order.service.OrderService;
 import kr.co.logitics_track_360.order.vo.ItemVO;
 import kr.co.logitics_track_360.order.vo.OrderStatusHistoryVO;
 import kr.co.logitics_track_360.order.vo.OrderVO;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 @Transactional(readOnly = true)
 public class OrderServiceImpl implements OrderService {
 	private final OrderMapper orderMapper;
@@ -36,24 +38,27 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Override
 	@Transactional
-    public void create(OrderCreateRequestDto orderDto) {
+    public void create(String userId, OrderCreateRequestDto orderDto) {
+		orderDto.setUserId(userId);
 	    orderDto.setStatus("READY");
-	 	OrderVO order = orderMapper.insert(orderDto);
+	    
+	 	orderMapper.insert(orderDto);
 
         for (ItemCreateRequestDto itemDto : orderDto.getItems()) {
-        	itemDto.setOrderId(order.getOrderId());
+        	itemDto.setOrderId(orderDto.getOrderId());
         	itemMapper.insert(itemDto);
         }
 
         OrderStatusHistoryCreateRequestDto orderStatusHistoryDto = new OrderStatusHistoryCreateRequestDto();
-        orderStatusHistoryDto.setOrderId(order.getOrderId());
+        orderStatusHistoryDto.setOrderId(orderDto.getOrderId());
         orderStatusHistoryDto.setStatus("READY");
-        orderStatusHistoryDto.setUpdatedBy(order.getUserId());
+        orderStatusHistoryDto.setUpdatedBy(userId);
         orderStatusHistoryMapper.insert(orderStatusHistoryDto);
     }
 
 	@Override
-    public List<OrderResponseDto> selectOrderList(OrderSearchRequestDto dto) {
+    public List<OrderResponseDto> selectOrderList(String userId, OrderSearchRequestDto dto) {
+		dto.setUserId(userId);
 		List<OrderVO> orderList = orderMapper.selectOrderList(dto);
 		
 		return orderList.stream()
@@ -114,7 +119,7 @@ public class OrderServiceImpl implements OrderService {
 		 return orderStatusHistoryList.stream()
 	        .map(orderStatusHistory -> {
 	        	return new OrderStatusHistoryResponseDto.Builder()
-		            .statusId(orderStatusHistory.getStatusId())
+		            .historyId(orderStatusHistory.getHistoryId())
 		            .orderId(orderStatusHistory.getOrderId())
 		            .status(orderStatusHistory.getStatus())
 		            .updatedBy(orderStatusHistory.getUpdatedBy())
@@ -126,14 +131,13 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	@Transactional
-	public void updateOrderStatus(OrderStatusHistoryCreateRequestDto dto) {
-        orderMapper.updateOrderStatus(dto.getStatus());
+	public void updateOrderStatus(String userId, OrderStatusHistoryCreateRequestDto dto) {
+		log.info(dto.toString());
+		
+		orderMapper.updateOrderStatus(dto.getOrderId(), dto.getStatus());
 
-        OrderStatusHistoryCreateRequestDto orderStatusHistoryDto = new OrderStatusHistoryCreateRequestDto();
-        orderStatusHistoryDto.setOrderId(dto.getOrderId());
-        orderStatusHistoryDto.setStatus(dto.getStatus());
-        orderStatusHistoryDto.setUpdatedBy(dto.getUpdatedBy());
-        orderStatusHistoryMapper.insert(orderStatusHistoryDto);
+        dto.setUpdatedBy(userId);
+        orderStatusHistoryMapper.insert(dto);
 	}
 
 }
