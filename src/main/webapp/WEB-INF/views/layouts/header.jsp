@@ -9,17 +9,27 @@
     request.setAttribute("username", username);
 %>
 
-<header>
-    <div class="logo">
-        <a href="${pageContext.request.contextPath}/main.do">LogiticsTrack360</a>
-    </div>
+<div class="container d-flex justify-content-between align-items-center" style="max-width: 900px;">
+  
+  <div class="d-flex align-items-center gap-4">
+    <a href="${pageContext.request.contextPath}/main.do" class="text-white text-decoration-none fw-bold fs-4">
+      LogisticsTrack360
+    </a>
     <nav>
-        <ul>
-            <li><a href="${pageContext.request.contextPath}/user/profile.do">프로필</a></li>
-        </ul>
+      <ul class="nav m-0">
+        <li class="nav-item">
+          <a href="${pageContext.request.contextPath}/user/profile.do" class="nav-link text-white px-2 py-0">
+            프로필
+          </a>
+        </li>
+      </ul>
     </nav>
-    <div class="user-info">
-        <span>${username}</span>
-        <a href="${pageContext.request.contextPath}/logout.do">로그아웃</a>
-    </div>
-</header>
+  </div>
+
+  <div class="d-flex align-items-center gap-3">
+    <span class="fw-semibold">${username}</span>
+    <a href="${pageContext.request.contextPath}/logout.do" class="btn btn-outline-light btn-sm">
+      로그아웃
+    </a>
+  </div>
+</div>
