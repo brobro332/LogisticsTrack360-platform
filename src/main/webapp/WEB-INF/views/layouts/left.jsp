@@ -19,15 +19,13 @@
 <aside class="sidebar">
     <nav>
         <ul>
-            <li><a href="#">내 오더 조회</a></li>
-            <li><a href="#">오더 등록</a></li>
+            <li><a href="${pageContext.request.contextPath}/order/list.do">주문관리</a></li>
 
             <c:if test="${isAdmin}">
-                <li><a href="#">전체 오더 관리</a></li>
-                <li><a href="#">운송 정보 관리</a></li>
-                <li><a href="#">통관 정보 관리</a></li>
-                <li><a href="#">ERP 연동 로그</a></li>
-                <li><a href="#">사용자 관리</a></li>
+                <li><a href="#">주문관리</a></li>
+                <li><a href="#">운송관리</a></li>
+                <li><a href="#">통관관리</a></li>
+                <li><a href="#">사용자관리</a></li>
             </c:if>
         </ul>
     </nav>
