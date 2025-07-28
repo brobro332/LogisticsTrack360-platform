@@ -20,10 +20,8 @@ import kr.co.logitics_track_360.order.service.OrderService;
 import kr.co.logitics_track_360.order.vo.ItemVO;
 import kr.co.logitics_track_360.order.vo.OrderStatusHistoryVO;
 import kr.co.logitics_track_360.order.vo.OrderVO;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
-@Slf4j
 @Transactional(readOnly = true)
 public class OrderServiceImpl implements OrderService {
 	private final OrderMapper orderMapper;
@@ -76,6 +74,26 @@ public class OrderServiceImpl implements OrderService {
 	            })
 	       .collect(Collectors.toList());
     }
+	
+	@Override
+	public List<OrderResponseDto> selectOrderListForDispatch() {
+		List<OrderVO> orderList = orderMapper.selectOrderListForDispatch();
+		
+		return orderList.stream()
+	        .map(order -> {
+	        	return new OrderResponseDto.Builder()
+		            .orderId(order.getOrderId())
+		            .title(order.getTitle())
+		            .description(order.getDescription())
+		            .status(order.getStatus())
+		            .userId(order.getUserId())
+		            .userName(order.getUserName())
+		            .createdAt(order.getCreatedAt())
+		            .updatedAt(order.getUpdatedAt())
+		            .build();
+	            })
+	       .collect(Collectors.toList());
+	}
 
 	@Override
     public OrderResponseDto selectOrder(String orderId) {
@@ -132,8 +150,6 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	@Transactional
 	public void updateOrderStatus(String userId, OrderStatusHistoryCreateRequestDto dto) {
-		log.info(dto.toString());
-		
 		orderMapper.updateOrderStatus(dto.getOrderId(), dto.getStatus());
 
         dto.setUpdatedBy(userId);

@@ -51,6 +51,22 @@
 	</if>
 	ORDER BY o.CREATED_AT DESC
   </select>
+  
+  <select id="selectOrderListForDispatch" resultType="kr.co.logitics_track_360.order.vo.OrderVO">
+    SELECT o.ORDER_ID     AS orderId, 
+           o.USER_ID      AS userId,
+           o.TITLE        AS title, 
+           o.DESCRIPTION  AS description, 
+           o.STATUS       AS status, 
+           u.NAME         AS userName, 
+           o.CREATED_AT   AS createdAt, 
+           o.UPDATED_AT   AS updatedAt
+    FROM TBL_ORDER o
+    LEFT JOIN TBL_USER u ON o.USER_ID = u.USER_ID
+	WHERE 1=1
+    AND o.STATUS IN ('READY', 'PICKUP')
+    ORDER BY o.CREATED_AT DESC
+  </select>
 	
   <select id="selectOrder" parameterType="String" resultType="kr.co.logitics_track_360.order.vo.OrderVO">
 	SELECT o.ORDER_ID    AS orderId,

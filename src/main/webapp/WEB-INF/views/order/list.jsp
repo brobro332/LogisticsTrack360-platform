@@ -1,5 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="org.springframework.security.core.Authentication" %>
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+<%@ page import="org.springframework.security.core.GrantedAuthority" %>
+
+<%
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    boolean isAdmin = false;
+    for (GrantedAuthority authority : auth.getAuthorities()) {
+        if ("ADMIN".equals(authority.getAuthority())) {
+            isAdmin = true;
+            break;
+        }
+    }
+    request.setAttribute("isAdmin", isAdmin);
+%>
 
 <div class="order-container">
     <h2>주문관리</h2>
@@ -39,9 +54,9 @@
                     <td>${order.createdAt}</td>
                     <td>
                         <button type="button" onclick="viewDetail('${order.orderId}')">상세</button>
-                        <!-- ADMIN
-                        <button type="button" onclick="updateStatus('${order.orderId}')">상태변경</button>
-                        -->
+                        <c:if test="${isAdmin}">
+                        	<button type="button" onclick="updateStatus('${order.orderId}')">상태변경</button>
+                        </c:if>
                     </td>
                 </tr>
             </c:forEach>
@@ -49,22 +64,25 @@
     </table>
 </div>
 
-<div id="statusModal" style="display:none;">
-    <div style="background-color: white; padding: 20px; border: 1px solid #ccc; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-        <h3>상태변경</h3>
-        <label for="statusSelect">상태선택</label>
-        <select id="statusSelect">
-            <option value="PICKUP">픽업요청</option>
-            <option value="DISPATCHED">출고완료</option>
-            <option value="DELIVERED">배송중</option>
-            <option value="COMPLETED">배송완료</option>
-            <option value="DELETED">삭제완료</option>
-        </select><br><br>
-
-        <button type="button" onclick="submitStatusChange()">상태변경</button>
-        <button type="button" onclick="closeModal()">취소</button>
-    </div>
-</div>
+<c:if test="${isAdmin}">
+	<div id="statusModal" style="display:none;">
+	    <div style="background-color: white; padding: 20px; border: 1px solid #ccc; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+	        <h3>상태변경</h3>
+	        <label for="statusSelect">상태선택</label>
+	        <select id="statusSelect">
+	        	<option value="READY">준비중</option>
+	            <option value="PICKUP">픽업요청</option>
+	            <option value="DISPATCHED">출고완료</option>
+	            <option value="DELIVERED">배송중</option>
+	            <option value="COMPLETED">배송완료</option>
+	            <option value="DELETED">삭제완료</option>
+	        </select><br><br>
+	
+	        <button type="button" onclick="submitStatusChange()">상태변경</button>
+	        <button type="button" onclick="closeModal()">취소</button>
+	    </div>
+	</div>
+</c:if>
 
 <script>
     let currentOrderId = null;
@@ -73,7 +91,6 @@
         window.location.href = "${pageContext.request.contextPath}/order/details.do?orderId=" + encodeURIComponent(orderId);
     }
 
-    /* ADMIN
     function updateStatus(orderId) {
         currentOrderId = orderId;
         document.getElementById('statusModal').style.display = 'block';  // Modal 표시
@@ -109,5 +126,4 @@
     function closeModal() {
         document.getElementById('statusModal').style.display = 'none';
     }
-    */
 </script>

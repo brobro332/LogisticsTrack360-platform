@@ -8,7 +8,7 @@
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     boolean isAdmin = false;
     for (GrantedAuthority authority : auth.getAuthorities()) {
-        if ("ROLE_ADMIN".equals(authority.getAuthority())) {
+        if ("ADMIN".equals(authority.getAuthority())) {
             isAdmin = true;
             break;
         }
@@ -22,10 +22,9 @@
             <li><a href="${pageContext.request.contextPath}/order/list.do">주문관리</a></li>
 
             <c:if test="${isAdmin}">
-                <li><a href="#">주문관리</a></li>
+                <li><a href="${pageContext.request.contextPath}/dispatch/list.do">출고관리</a></li>
                 <li><a href="#">운송관리</a></li>
                 <li><a href="#">통관관리</a></li>
-                <li><a href="#">사용자관리</a></li>
             </c:if>
         </ul>
     </nav>

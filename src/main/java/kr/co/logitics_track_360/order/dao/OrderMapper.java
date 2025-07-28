@@ -14,5 +14,6 @@ public interface OrderMapper {
 	int insert(OrderCreateRequestDto dto);
 	int updateOrderStatus(@Param("orderId") Long orderId, @Param("status") String status);
 	List<OrderVO> selectOrderList(OrderSearchRequestDto dto);
+	List<OrderVO> selectOrderListForDispatch();
 	OrderVO selectOrder(String orderId);
 }

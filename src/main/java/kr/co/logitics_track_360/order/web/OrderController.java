@@ -3,6 +3,7 @@ package kr.co.logitics_track_360.order.web;
 import java.util.List;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +37,12 @@ public class OrderController {
 	@GetMapping("/list.do")
 	public String renderOrderListPage(Authentication authentication, @ModelAttribute OrderSearchRequestDto dto, Model model) {
 		String userId = authentication.getName();
+		for (GrantedAuthority authority : authentication.getAuthorities()) {
+	        if ("ADMIN".equals(authority.getAuthority())) {
+	        	userId = null;
+	            break;
+	        }
+	    }
 		
 	    List<OrderResponseDto> orderList = service.selectOrderList(userId, dto);
 		model.addAttribute("orderList", orderList);

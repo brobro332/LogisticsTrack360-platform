@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.logitics_track_360.dispatch.dao.DispatchMapper">
+    <resultMap id="DispatchResultMap" type="kr.co.logitics_track_360.dispatch.vo.DispatchVO">
+        <id property="dispatchId" column="DISPATCH_ID" />
+        <result property="orderId" column="ORDER_ID" />
+        <result property="warehouseName" column="WAREHOUSE_NAME" />
+        <result property="dispatchDate" column="DISPATCH_DATE" />
+        <result property="dispatcher" column="DISPATCHER" />
+        <result property="sourceType" column="SOURCE_TYPE" />
+        <result property="updatedBy" column="UPDATED_BY" />
+        <result property="updatedAt" column="UPDATED_AT" />
+        <result property="createdAt" column="CREATED_AT" />
+    </resultMap>
+
+    <insert id="insertBatch" parameterType="list">
+	  INSERT INTO TBL_DISPATCH (
+	      DISPATCH_ID,
+	      ORDER_ID,
+	      WAREHOUSE_NAME,
+	      DISPATCH_DATE,
+	      DISPATCHER,
+	      SOURCE_TYPE,
+	      UPDATED_BY
+	  )
+	  SELECT
+	      SEQ_DISPATCH_ID.NEXTVAL,
+	      A.*
+	  FROM (
+	    <foreach collection="list" item="item" separator="UNION ALL">
+	      SELECT
+	        #{item.orderId} AS ORDER_ID,
+	        #{item.warehouseName} AS WAREHOUSE_NAME,
+	        #{item.dispatchDate} AS DISPATCH_DATE,
+	        #{item.dispatcher} AS DISPATCHER,
+	        #{item.sourceType} AS SOURCE_TYPE,
+	        #{item.updatedBy} AS UPDATED_BY
+	      FROM DUAL
+	    </foreach>
+	  ) A
+	</insert>
+
+    <select id="select" resultMap="DispatchResultMap">
+        SELECT DISPATCH_ID,
+               ORDER_ID,
+               WAREHOUSE_NAME,
+               DISPATCH_DATE,
+               DISPATCHER,
+               SOURCE_TYPE,
+               UPDATED_BY,
+               UPDATED_AT,
+               CREATED_AT
+        FROM TBL_DISPATCH
+        ORDER BY DISPATCH_DATE DESC, CREATED_AT DESC
+    </select>
+</mapper>
