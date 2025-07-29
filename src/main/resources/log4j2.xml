@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="ERROR">
+
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %level - %msg%n%throwable%n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="INFO" additivity="false">
+            <AppenderRef ref="console"/>
+        </Root>
+
+        <!-- log4jdbc log -->
+        <Logger name="log4jdbc.log4j2" level="error" additivity="false">
+            <AppenderRef ref="console"/>
+        </Logger>
+
+        <!-- Query Log -->
+        <Logger name="jdbc.sqlonly" level="INFO" additivity="true">
+            <AppenderRef ref="console"/>
+        </Logger>
+
+        <!-- ResultSet Table -->
+        <Logger name="jdbc.resultsettable" level="INFO" additivity="false">
+            <AppenderRef ref="console"/>
+        </Logger>
+
+        <!-- Query -->
+        <Logger name="jdbc.sqltiming" level="off"/>
+        <Logger name="jdbc.audit" level="off"/>
+        <Logger name="jdbc.resultset" level="info"/>
+        <Logger name="jdbc.connection" level="off"/>
+    </Loggers>
+</Configuration>

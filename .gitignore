@@ -3,6 +3,9 @@
 .project
 .factorypath
 .settings/
+jdbc.properties
+.env
+ojdbc*.jar
 
 # Maven
 target/
