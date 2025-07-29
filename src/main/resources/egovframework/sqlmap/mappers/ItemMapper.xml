@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.co.logitics_track_360.order.dao.ItemMapper">
-  <insert id="insert" parameterType="kr.co.logitics_track_360.order.dto.ItemCreateRequestDto">
+<mapper namespace="kr.co.logistics_track_360.order.dao.ItemMapper">
+  <insert id="insert" parameterType="kr.co.logistics_track_360.order.dto.ItemCreateRequestDto">
     INSERT INTO TBL_ITEM (
         ITEM_ID,
         ORDER_ID,
@@ -23,7 +23,7 @@
     )
   </insert>
 
-  <select id="selectItemList" parameterType="string" resultType="kr.co.logitics_track_360.order.vo.ItemVO">
+  <select id="selectItemList" parameterType="string" resultType="kr.co.logistics_track_360.order.vo.ItemVO">
     SELECT ITEM_ID   AS itemId,
            ORDER_ID  AS orderId,
            NAME      AS name,

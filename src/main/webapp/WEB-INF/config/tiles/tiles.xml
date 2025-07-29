@@ -6,7 +6,7 @@
 <tiles-definitions>
     <definition name="default_layout" template="/WEB-INF/views/layouts/base.jsp">
         <put-attribute name="header" value="/WEB-INF/views/layouts/header.jsp" />
-        <put-attribute name="title" value="LogiticsTrack360" />
+        <put-attribute name="title" value="LogisticsTrack360" />
         <put-attribute name="content" value=""/>
         <put-attribute name="left" value="/WEB-INF/views/layouts/left.jsp" />
         <put-attribute name="footer" value="/WEB-INF/views/layouts/footer.jsp" />
@@ -27,12 +27,12 @@
 
     <!-- Exclude Tiles -->
     <definition name="user/login" template="/WEB-INF/views/layouts/empty.jsp">
-    	<put-attribute name="title" value="LogiticsTrack360" />
+    	<put-attribute name="title" value="LogisticsTrack360" />
         <put-attribute name="content" value="/WEB-INF/views/user/login.jsp" />
     </definition>
 
     <definition name="user/join" template="/WEB-INF/views/layouts/empty.jsp">
-    	<put-attribute name="title" value="LogiticsTrack360" />
+    	<put-attribute name="title" value="LogisticsTrack360" />
         <put-attribute name="content" value="/WEB-INF/views/user/join.jsp" />
     </definition>
 

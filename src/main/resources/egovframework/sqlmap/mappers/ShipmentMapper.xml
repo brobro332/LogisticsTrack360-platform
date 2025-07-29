@@ -3,8 +3,8 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.co.logitics_track_360.shipment.dao.ShipmentMapper">
-    <resultMap id="ShipmentResultMap" type="kr.co.logitics_track_360.shipment.vo.ShipmentVO">
+<mapper namespace="kr.co.logistics_track_360.shipment.dao.ShipmentMapper">
+    <resultMap id="ShipmentResultMap" type="kr.co.logistics_track_360.shipment.vo.ShipmentVO">
 	  <constructor>
 	    <idArg column="SHIPMENT_ID" javaType="java.lang.Long" />
 	    <arg column="ORDER_ID" javaType="java.lang.String" />
@@ -32,7 +32,7 @@
         WHERE SHIPMENT_ID = #{shipmentId}
     </select>
 
-    <insert id="insert" parameterType="kr.co.logitics_track_360.shipment.dto.ShipmentCreateRequestDto">
+    <insert id="insert" parameterType="kr.co.logistics_track_360.shipment.dto.ShipmentCreateRequestDto">
         INSERT INTO TBL_SHIPMENT (
             SHIPMENT_ID,
             ORDER_ID,
@@ -56,7 +56,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="kr.co.logitics_track_360.shipment.dto.ShipmentUpdateRequestDto">
+    <update id="update" parameterType="kr.co.logistics_track_360.shipment.dto.ShipmentUpdateRequestDto">
         UPDATE TBL_SHIPMENT
         SET
             CARRIER_NAME = #{carrierName},

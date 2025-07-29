@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 	<groupId>kr.co</groupId>
-	<artifactId>LogiticsTrack360-platform</artifactId>
+	<artifactId>LogisticsTrack360-platform</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.0</version>
-	<name>LogiticsTrack360-platform</name>
+	<name>LogisticsTrack360-platform</name>
 	<url>http://www.egovframe.go.kr</url>
 
 	<licenses>

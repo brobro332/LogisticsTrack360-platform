@@ -3,8 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.co.logitics_track_360.user.dao.UserMapper">
-  <insert id="insertUser" parameterType="kr.co.logitics_track_360.user.dto.JoinRequestDto">
+<mapper namespace="kr.co.logistics_track_360.user.dao.UserMapper">
+  <insert id="insertUser" parameterType="kr.co.logistics_track_360.user.dto.JoinRequestDto">
     INSERT INTO TBL_USER (
         USER_ID, 
         PASSWORD, 
@@ -24,7 +24,7 @@
     )
   </insert>
 
-  <select id="selectBy" parameterType="map" resultType="kr.co.logitics_track_360.user.vo.UserVO">
+  <select id="selectBy" parameterType="map" resultType="kr.co.logistics_track_360.user.vo.UserVO">
     SELECT USER_ID as userId, 
            PASSWORD, 
            NAME,

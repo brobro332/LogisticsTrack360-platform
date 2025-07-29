@@ -3,8 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.co.logitics_track_360.dispatch.dao.DispatchMapper">
-    <resultMap id="DispatchResultMap" type="kr.co.logitics_track_360.dispatch.vo.DispatchVO">
+<mapper namespace="kr.co.logistics_track_360.dispatch.dao.DispatchMapper">
+    <resultMap id="DispatchResultMap" type="kr.co.logistics_track_360.dispatch.vo.DispatchVO">
         <id property="dispatchId" column="DISPATCH_ID" />
         <result property="orderId" column="ORDER_ID" />
         <result property="warehouseName" column="WAREHOUSE_NAME" />

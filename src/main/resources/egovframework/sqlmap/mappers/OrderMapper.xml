@@ -3,9 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.co.logitics_track_360.order.dao.OrderMapper">
+<mapper namespace="kr.co.logistics_track_360.order.dao.OrderMapper">
 
-  <insert id="insert" parameterType="kr.co.logitics_track_360.order.dto.OrderCreateRequestDto">
+  <insert id="insert" parameterType="kr.co.logistics_track_360.order.dto.OrderCreateRequestDto">
 	INSERT INTO TBL_ORDER (
 	    ORDER_ID,
 	    USER_ID,
@@ -28,7 +28,7 @@
     </selectKey>
   </insert>
 	
-  <select id="selectOrderList" parameterType="kr.co.logitics_track_360.order.dto.OrderSearchRequestDto" resultType="kr.co.logitics_track_360.order.vo.OrderVO">
+  <select id="selectOrderList" parameterType="kr.co.logistics_track_360.order.dto.OrderSearchRequestDto" resultType="kr.co.logistics_track_360.order.vo.OrderVO">
     SELECT o.ORDER_ID    AS orderId,
 	       o.USER_ID     AS userId,
 	       o.TITLE       AS title,
@@ -52,7 +52,7 @@
 	ORDER BY o.CREATED_AT DESC
   </select>
   
-  <select id="selectOrderListForDispatch" resultType="kr.co.logitics_track_360.order.vo.OrderVO">
+  <select id="selectOrderListForDispatch" resultType="kr.co.logistics_track_360.order.vo.OrderVO">
     SELECT o.ORDER_ID     AS orderId, 
            o.USER_ID      AS userId,
            o.TITLE        AS title, 
@@ -68,7 +68,7 @@
     ORDER BY o.CREATED_AT DESC
   </select>
 	
-  <select id="selectOrder" parameterType="String" resultType="kr.co.logitics_track_360.order.vo.OrderVO">
+  <select id="selectOrder" parameterType="String" resultType="kr.co.logistics_track_360.order.vo.OrderVO">
 	SELECT o.ORDER_ID    AS orderId,
 	       o.USER_ID     AS userId,
 	       o.TITLE       AS title,

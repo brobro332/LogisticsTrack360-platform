@@ -33,32 +33,32 @@
   </bean>
   
   <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-    <property name="mapperInterface" value="kr.co.logitics_track_360.user.dao.UserMapper" />
+    <property name="mapperInterface" value="kr.co.logistics_track_360.user.dao.UserMapper" />
     <property name="sqlSessionFactory" ref="sqlSessionFactory" />
   </bean>
   
   <bean id="orderMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-    <property name="mapperInterface" value="kr.co.logitics_track_360.order.dao.OrderMapper" />
+    <property name="mapperInterface" value="kr.co.logistics_track_360.order.dao.OrderMapper" />
     <property name="sqlSessionFactory" ref="sqlSessionFactory" />
   </bean>
   
   <bean id="itemMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-    <property name="mapperInterface" value="kr.co.logitics_track_360.order.dao.ItemMapper" />
+    <property name="mapperInterface" value="kr.co.logistics_track_360.order.dao.ItemMapper" />
     <property name="sqlSessionFactory" ref="sqlSessionFactory" />
   </bean>
   
   <bean id="orderStatusHistoryMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-    <property name="mapperInterface" value="kr.co.logitics_track_360.order.dao.OrderStatusHistoryMapper" />
+    <property name="mapperInterface" value="kr.co.logistics_track_360.order.dao.OrderStatusHistoryMapper" />
     <property name="sqlSessionFactory" ref="sqlSessionFactory" />
   </bean>
   
   <bean id="dispatchMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-    <property name="mapperInterface" value="kr.co.logitics_track_360.dispatch.dao.DispatchMapper" />
+    <property name="mapperInterface" value="kr.co.logistics_track_360.dispatch.dao.DispatchMapper" />
     <property name="sqlSessionFactory" ref="sqlSessionFactory" />
   </bean>
   
   <bean id="shipmentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-    <property name="mapperInterface" value="kr.co.logitics_track_360.shipment.dao.ShipmentMapper" />
+    <property name="mapperInterface" value="kr.co.logistics_track_360.shipment.dao.ShipmentMapper" />
     <property name="sqlSessionFactory" ref="sqlSessionFactory" />
   </bean>
   
